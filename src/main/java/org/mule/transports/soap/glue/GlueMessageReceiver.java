@@ -11,12 +11,12 @@
 package org.mule.transports.soap.glue;
 
 import org.mule.config.MuleProperties;
-import org.mule.config.i18n.Message;
-import org.mule.config.i18n.Messages;
+import org.mule.config.i18n.CoreMessages;
 import org.mule.impl.MuleDescriptor;
 import org.mule.providers.AbstractMessageReceiver;
 import org.mule.providers.ConnectException;
 import org.mule.providers.soap.ServiceProxy;
+import org.mule.transports.soap.glue.i18n.GlueMessages;
 import org.mule.umo.UMOComponent;
 import org.mule.umo.UMOException;
 import org.mule.umo.endpoint.UMOEndpoint;
@@ -65,7 +65,7 @@ public class GlueMessageReceiver extends AbstractMessageReceiver
             if (interfaces.length == 0)
             {
                 throw new InitialisationException(
-                    new Message("soap", 2, component.getDescriptor().getName()), this);
+                     GlueMessages.noServiceInterfacesFor(component.getDescriptor().getName()), this);
             }
 
             // this is always initialisaed as synchronous as ws invocations
@@ -105,18 +105,28 @@ public class GlueMessageReceiver extends AbstractMessageReceiver
         }
         catch (ClassNotFoundException e)
         {
-            throw new InitialisationException(new Message(Messages.CLASS_X_NOT_FOUND, e.getMessage()), e,
+            throw new InitialisationException(CoreMessages.cannotLoadFromClasspath(e.getMessage()), e,
                 this);
         }
         catch (UMOException e)
         {
-            throw new InitialisationException(new Message("soap", 3, component.getDescriptor().getName()), e,
+            throw new InitialisationException(CoreMessages.failedToCreate(component.getDescriptor().getName()), e,
                 this);
         }
         catch (Exception e)
         {
-            throw new InitialisationException(new Message(Messages.FAILED_TO_START_X, "Soap Server"), e, this);
+            throw new InitialisationException(CoreMessages.failedToStart("Soap Server"), e, this);
         }
+    }
+
+    protected void doStart() throws UMOException
+    {
+        //no op
+    }
+
+    protected void doStop() throws UMOException
+    {
+        //no op
     }
 
     public void doDisconnect() throws Exception
@@ -168,8 +178,7 @@ public class GlueMessageReceiver extends AbstractMessageReceiver
         }
         catch (RegistryException e)
         {
-            logger.error(new Message(Messages.FAILED_TO_UNREGISTER_X_ON_ENDPOINT_X, component.getDescriptor()
-                .getName(), endpoint.getEndpointURI()), e);
+            logger.error(CoreMessages.failedToUnregister(component.getDescriptor().getName(), endpoint.getEndpointURI()), e);
         }
     }
 
