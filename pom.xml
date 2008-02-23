@@ -45,7 +45,7 @@
         </snapshotRepository>
         <site>
             <id>muleforge.webdav.sites</id>
-            <url>dav:https://dav.muleforge.org/${domainName}/</url>
+            <url>dav:https://dav.muleforge.org/${domainName}/${version}</url>
         </site>
     </distributionManagement>
     <build>
@@ -133,14 +133,14 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jdepend-maven-plugin</artifactId>
             </plugin>
-            <!--<plugin>-->
-            <!--<groupId>org.codehaus.mojo</groupId>-->
-            <!--<artifactId>findbugs-maven-plugin</artifactId>-->
-            <!-- configuration>-->
+            <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>findbugs-maven-plugin</artifactId>
+             <!--<configuration>-->
             <!--<threshold>Low</threshold>-->
             <!--<effort>Max</effort>-->
-            <!--</configuration -->
-            <!--</plugin>-->
+            <!--</configuration> -->
+            </plugin>
         </plugins>
     </reporting>
     <dependencies>
