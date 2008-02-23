@@ -10,16 +10,16 @@
 
 package org.mule.transports.soap.glue;
 
+import org.mule.config.i18n.CoreMessages;
+import org.mule.impl.InitialisationCallback;
+import org.mule.umo.lifecycle.InitialisationException;
+
 import electric.glue.context.ServiceContext;
 import electric.registry.Registry;
 import electric.registry.RegistryException;
 import electric.service.IService;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.mule.config.i18n.Message;
-import org.mule.impl.InitialisationCallback;
-import org.mule.umo.lifecycle.InitialisationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <code>GlueInitialisationCallback</code> is invoked when an Glue service
@@ -31,7 +31,7 @@ public class GlueInitialisationCallback implements InitialisationCallback
     /**
      * logger used by this class
      */
-    protected static Log logger = LogFactory.getLog(GlueInitialisationCallback.class);
+    protected static Logger logger = LoggerFactory.getLogger(GlueInitialisationCallback.class);
 
     private IService service;
     private ServiceContext context;
@@ -69,7 +69,7 @@ public class GlueInitialisationCallback implements InitialisationCallback
         }
         catch (RegistryException e)
         {
-            throw new InitialisationException(new Message("soap", 3, component.getClass().getName()), e, this);
+            throw new InitialisationException(CoreMessages.failedToLoad(component.getClass().getName()), e, this);
         }
     }
 }

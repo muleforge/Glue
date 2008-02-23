@@ -14,6 +14,7 @@ import org.mule.umo.UMOException;
 import org.mule.umo.endpoint.UMOImmutableEndpoint;
 import org.mule.umo.provider.UMOMessageDispatcher;
 import org.mule.umo.provider.UMOMessageDispatcherFactory;
+import org.mule.providers.AbstractMessageDispatcherFactory;
 
 /**
  * <code>GlueMessageDispatcherFactory</code> Creates a Soap Message dispatcher that
@@ -21,7 +22,7 @@ import org.mule.umo.provider.UMOMessageDispatcherFactory;
  * 
  */
 
-public class GlueMessageDispatcherFactory implements UMOMessageDispatcherFactory
+public class GlueMessageDispatcherFactory extends AbstractMessageDispatcherFactory
 {
     public UMOMessageDispatcher create(UMOImmutableEndpoint endpoint) throws UMOException
     {

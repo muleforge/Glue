@@ -10,8 +10,10 @@
 
 package org.mule.transports.soap.glue;
 
-import org.mule.providers.AbstractServiceEnabledConnector;
+import org.mule.providers.AbstractConnector;
 import org.mule.umo.UMOComponent;
+import org.mule.umo.UMOException;
+import org.mule.umo.lifecycle.InitialisationException;
 import org.mule.umo.endpoint.UMOEndpoint;
 import org.mule.umo.provider.UMOMessageReceiver;
 
@@ -23,11 +25,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * <code>GlueConnector</code> instanciates a Glue soap server and allows beans to
+ * <code>GlueConnector</code> instantiates a Glue soap server and allows beans to
  * be dynamically exposed via web services simply by registering with the connector.
  */
 
-public class GlueConnector extends AbstractServiceEnabledConnector
+public class GlueConnector extends AbstractConnector
 {
     private List serverEndpoints = new ArrayList();
     private Map context;
@@ -42,6 +44,7 @@ public class GlueConnector extends AbstractServiceEnabledConnector
     {
         return "glue";
     }
+
 
     public UMOMessageReceiver createReceiver(UMOComponent component, UMOEndpoint endpoint) throws Exception
     {
@@ -95,5 +98,43 @@ public class GlueConnector extends AbstractServiceEnabledConnector
     public boolean supportsProtocol(String protocol)
     {
         return super.supportsProtocol(protocol) || protocol.toLowerCase().equals("glue:http");
+    }
+
+    protected void doConnect() throws Exception
+    {
+        //no op
+    }
+
+    protected void doDisconnect() throws Exception
+    {
+        //no op
+    }
+
+    protected void doDispose()
+    {
+        if(context!=null)
+        {
+            context.clear();
+        }
+
+        if(serverEndpoints!=null)
+        {
+            serverEndpoints.clear();
+        }
+    }
+
+    protected void doInitialise() throws InitialisationException
+    {
+        //no op
+    }
+
+    protected void doStart() throws UMOException
+    {
+        //no op
+    }
+
+    protected void doStop() throws UMOException
+    {
+        //no op
     }
 }
