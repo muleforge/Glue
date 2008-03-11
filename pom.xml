@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.mule.transports</groupId>
-    <artifactId>mule-transport-glue</artifactId>
+    <artifactId>mule-transport-wmglue</artifactId>
     <name>mule-transport-glue</name>
-    <description>Legacy support for WebMethods Glue integration.</description>
+    <description>Legacy support for WebMethods Glue integration. See http://www.mulesource.org/display/WMGLUE/Home for more information</description>
     <packaging>jar</packaging>
     <version>2.0.0-SNAPSHOT</version>
     <url>http://www.muleforge.org/projects/WMGLUE</url>
