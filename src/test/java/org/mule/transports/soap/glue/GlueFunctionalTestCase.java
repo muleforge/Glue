@@ -11,22 +11,13 @@ package org.mule.transports.soap.glue;
 
 import org.mule.config.ExceptionHelper;
 import org.mule.config.builders.QuickConfigurationBuilder;
-import org.mule.extras.client.MuleClient;
-import org.mule.providers.http.HttpConnector;
-import org.mule.providers.http.HttpConstants;
 import org.mule.tck.providers.soap.AbstractSoapUrlEndpointFunctionalTestCase;
 import org.mule.umo.UMOException;
-import org.mule.umo.UMOMessage;
 import org.mule.umo.lifecycle.InitialisationException;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.HashMap;
-import java.util.Map;
 
-/**
- * TODO
- */
 public class GlueFunctionalTestCase extends AbstractSoapUrlEndpointFunctionalTestCase
 {
 
