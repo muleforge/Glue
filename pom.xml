@@ -45,7 +45,7 @@
         </snapshotRepository>
         <site>
             <id>muleforge.webdav.sites</id>
-            <url>dav:https://dav.muleforge.org/${domainName}/${version}</url>
+            <url>dav:https://dav.muleforge.org/${domainName}/${version}/maven</url>
         </site>
     </distributionManagement>
     <build>
